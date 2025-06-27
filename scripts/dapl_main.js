@@ -92,7 +92,7 @@ function generate_tile_system()
     {
        total_tiles[a] = new Array();
       total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile())
-      b =0; whule (b < floor_levels/4)
+      b =0; while (b < floor_levels/4)
       {
         total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile());
         b = b+1; 
