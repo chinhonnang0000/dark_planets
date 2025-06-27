@@ -1,7 +1,7 @@
 Events.on(ContentInitEvent, e =>
   {
     init_random();
-    var this_pl = Vars.content.planet("dark_planets-dapl_main");
+    this_pl = Vars.content.planet("dark_planets-dapl_main");
     this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
     //this_pl.meshLoader = new HexMesh(this_pl,new HexMesher(this_pl),9); //shelved hex mesh
     this_pl.generator = new SerpuloPlanetGenerator();
@@ -28,6 +28,7 @@ function get_block()
     return Blocks.coreZone;
 }
 
+var this_pl;
 var total_ties =[]; 
 var wos = 0.07
 
