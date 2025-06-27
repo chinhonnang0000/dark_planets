@@ -4,12 +4,17 @@
   "allowLaunchSchematics":true,
   "alwaysUnlocked":true,
   "clearSectorOnLose": true,
-  "description":" Too much orbit radius results in crash during campaign startup."
-  "localizedName":"dapl_main_failed_star",
+  "description":" Too much orbit radius results in crash during campaign startup.",
+  "lightSrcFrom":0,
+	"lightSrcTo":0,
+	"lightDstFrom": 0,
+	"lightDstTo": 0,
+  "localizedName":"dapl_main\nfailed_star",
   "orbitRadius":999,  
   "parent":"sun",
   "radius":25,
   "research":{"root":true, "requiresUnlock":false,"planet":"dapl_main","description":"a failed star. this solar system has low enemy presence"},
   "sectorSize":"4"
   "updateLighting":false,
+ 
 }
