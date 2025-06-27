@@ -2,7 +2,7 @@
   "accessible":"true",
   "allowLaunchLoadout": true,
   "allowLaunchSchematics":true,
- 
+  "alwaysUnlocked":true,
   "parent":"sun",
   "radius":25,
   "research":{"root":true, "requiresUnlock":false,"planet":"dapl_main","description":"a failed star. this solar system has low enemy presence"},
