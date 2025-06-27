@@ -1,7 +1,7 @@
 Events.on(ContentInitEvent, e =>
   {
-    init_random();
     this_pl = Vars.content.planet("dark_planets-dapl_main");
+    init_random();
     this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
     //this_pl.meshLoader = new HexMesh(this_pl,new HexMesher(this_pl),9); //shelved hex mesh
     this_pl.generator = new SerpuloPlanetGenerator();
