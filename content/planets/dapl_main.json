@@ -12,7 +12,7 @@
   "localizedName":"dapl_main\nfailed_star",
   "orbitRadius":999,  
   "parent":"sun",
-  "radius":25,
+  "radius":12,
   "research":{"root":true, "requiresUnlock":false,"planet":"dapl_main","description":"a failed star. this solar system has low enemy presence"},
   "sectorSize":"4"
   "updateLighting":false,
