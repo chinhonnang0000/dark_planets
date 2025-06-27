@@ -12,7 +12,7 @@ getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sa
 generate()
 {
   init_random();  
-}
+},
 rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
   
 });
