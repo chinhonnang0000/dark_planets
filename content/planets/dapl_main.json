@@ -3,9 +3,10 @@
   "allowLaunchLoadout": true,
   "allowLaunchSchematics":true,
   "alwaysUnlocked":"true",
-  "localizedName":"dapl_main failed star";
+  "localizedName":"dapl_main failed star",
   "orbitRadius": 999999999,
   "parent":"sun",
+  "redius":25,
   "research":{"root":true, "requiresUnlock":false,"planet":"dapl_main","description":"a failed star. this solar system has low enemy presence"},
-  "sectorSize":"4";
+  "sectorSize":"4"
 }
