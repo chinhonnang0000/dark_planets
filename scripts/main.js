@@ -1,4 +1,4 @@
-require("dapl_main.js"); 
+require("dapl_main"); 
 
 // check script working
 Events.on(ContentInitEvent, e =>
