@@ -10,6 +10,7 @@
 	"lightDstFrom": 0,
 	"lightDstTo": 0,
   "localizedName":"dapl_main\nfailed_star",
+"mesh":{"type":"NoiseMesh","divisions":6,"color1":"888888","color2":"aaaabb","colorOct":5,"colorPersistence":0.5,"octaves":3,"radius":1.9},
   "orbitRadius":999,  
   "parent":"sun",
   "radius":12,
