@@ -1,9 +1,11 @@
 {
   "author":"chinhonnang0000",
-  "description":"An incmplete mod that represents failed solar system far far away from the sun."
-  "displayName":"dark_palents",
+  "description":"An incmplete mod that represents failed solar system far far away from the sun.",
+  "dependencies":[],
+  "displayName":"dark_planets",
+  "hidden":false,
   "minVesrion":137,
-  "name":"dark_palents",
+  "name":"dark_planets",
   "repo": "chinhonnang0000/dark_planets"
   "version":"pre-alpha build 0",
 }
