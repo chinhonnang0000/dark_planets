@@ -2,17 +2,12 @@ Events.on(ContentInitEvent, e =>
   {
     this_pl = Vars.content.planet("dark_planets-dapl_main");
     init_random();
-    this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
-    //this_pl.meshLoader = new HexMesh(this_pl,new HexMesher(this_pl),9); //shelved hex mesh
-    this_pl.generator = new SerpuloPlanetGenerator();
+    this_pl.generator = dapl_main_gen;
   })
 var dapl_main_gen = extenc(SerpuloPlanetGenerator,
 {
 getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sand; co.set(block.mapColor).a(1 - bl.albedo);},  
-generate()
-{
-  init_random();  
-},
+//generate(){init_random();},
 rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
   
 });
