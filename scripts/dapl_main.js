@@ -179,7 +179,10 @@ generate(ti,se)
         state.rules.spawns = Waves.generate(difficulty, new Rand(), state.rules.attackMode);
 },
 rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
-  
+noiseOct(x, y, octaves, falloff, scl){
+    var v = this.sector.rect.project(x, y).scl(5);
+    return Simplex.noise3d(1, octaves, falloff, 0.4/scl, v.x, v.y, v.z);
+}
 });
 var floors_arky = [Blocks.BeryllicStone,Blocks.arkyicStone,Blocks.arkyciteFloor, Blocks.arkyicStone, Blocks.BeryllicStone];
 var floors_volc = [Blokss.dacite,Blocks.basalt,Blocks.hotrock,Blocks.magmarock,Block.slag,Blocks.magmarock,Blocks.hotrock,Blocks.basalt,Blokss.dacite]; // to insert core zone at random. 
