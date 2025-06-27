@@ -33,7 +33,7 @@ var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.s
 var floor_levels; 
 var sclr,sclx,scly,sclz; 
 var this_pl;
-var total_ties =[]; 
+var total_tiles =[]; 
 var wos = 0.07;
 
 function get_tile(a,b)
