@@ -2,7 +2,7 @@ Events.on(ContentInitEvent, e =>
   {
     init_random();
     Vars.content.planet("dark_planets-dapl_main").sectorSeed = Math.floor(Math.random() * 999999999);
-    Vars.content.planet("dark_planets-dapl_main").meshLoader = new HexMesh(Vars.content.planet("dark_planets-dapl_main"),new HexMesher(),9);
+    Vars.content.planet("dark_planets-dapl_main").meshLoader = new HexMesh(Vars.content.planet("dark_planets-dapl_main"),new HexMesher(0),9);
     Vars.content.planet("dark_planets-dapl_main").generator = new SerpuloPlanetGenerator();
   })
 var dapl_main_gen = extenc(SerpuloPlanetGenerator,
