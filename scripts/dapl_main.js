@@ -46,7 +46,7 @@ generate(ti,se)
                var nscl = rand.random(20, 60);
                var stroke = rand.random(4, 12);
                
-               dapl_main_gen.brush(intm_main_generator.pathfind(this.x, this.y, to.x, to.y, tile => (tile.solid() ? 5 : 0) + 
+               dapl_main_gen.brush(dapl_main_gen.pathfind(this.x, this.y, to.x, to.y, tile => (tile.solid() ? 5 : 0) + 
                dapl_main_gen.noiseOct(tile.x, tile.y, 1, 1, 1 / nscl) * 60, Astar.manhattan), stroke);
            }
        };
