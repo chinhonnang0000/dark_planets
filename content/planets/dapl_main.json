@@ -3,6 +3,7 @@
   "allowLaunchLoadout": true,
   "allowLaunchSchematics":true,
   "alwaysUnlocked":true,
+  "clearSectorOnLose": true,
   "description":" Too much orbit radius results in crash during campaign startup."
   "localizedName":"dapl_main_failed_star",
   "orbitRadius":999,  
