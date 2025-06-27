@@ -93,10 +93,7 @@ generate(ti,se)
            for(var rx = -waterCheckRad; rx <= waterCheckRad; rx++){
                for(var ry = -waterCheckRad; ry <= waterCheckRad; ry++){
                    var tile = this.tiles.get(cx + rx, cy + ry);
-                   
-                   if(tile == null || tile.floor().liquidDrop != null){
-                       waterTiles++;
-                   };
+                   if(tile == null || tile.floor().liquidDrop != null){waterTiles++;};
                };
            };
 
@@ -168,7 +165,7 @@ generate(ti,se)
             this.basegen.generate(tiles, enemies.map(r => this.tiles.getn(r.x, r.y)), this.tiles.get(spawn.x, spawn.y), state.rules.waveTeam, this.sector, difficulty);
             state.rules.attackMode = this.sector.info.attack = true;
         }else{
-            state.rules.winWave = this.sector.info.winWave = 100 + 5 * Math.max(difficulty * 10, 1);
+            state.rules.winWave = this.sector.info.winWave = 10 + 5 * Math.max(difficulty * 10, 1);
         };
 
         var waveTimeDec = 0.4; 
@@ -239,10 +236,10 @@ function init_random()
 {
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
-  sclr = 5 * Math.pow(2,Math.random() + Math.random());
-  sclx = 5 * Math.pow(2,Math.random() + Math.random());
-  scly = 5 * Math.pow(2,Math.random() + Math.random());
-  sclz = 5 * Math.pow(2,Math.random() + Math.random());
+  sclr = 5 * Math.pow(2,Math.random());
+  sclx = 5 * Math.pow(2,Math.random());
+  scly = 5 * Math.pow(2,Math.random());
+  sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
 
   generate_tile_system();
