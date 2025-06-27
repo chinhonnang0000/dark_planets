@@ -4,7 +4,7 @@ Events.on(ContentInitEvent, e =>
     init_random();
     this_pl.generator = dapl_main_gen;
   })
-var dapl_main_gen = extenc(SerpuloPlanetGenerator,
+var dapl_main_gen = extend(SerpuloPlanetGenerator,
 {
 getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sand; co.set(block.mapColor).a(1 - bl.albedo);},  
 //generate(){init_random();},
