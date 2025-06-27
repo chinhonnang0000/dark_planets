@@ -1,6 +1,7 @@
 {
   "accessible":"true",
+  "allowLaunchLoadout": true,
+  "allowLaunchSchematics":true,
   "alwaysUnlocked":"true",
-
   "parent":"sun",
 }
