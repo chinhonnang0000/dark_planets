@@ -10,12 +10,12 @@
 	"lightDstFrom": 0,
 	"lightDstTo": 0,
   "localizedName":"dapl_main\nfailed_star",
-"mesh":{"type":"NoiseMesh","divisions":6,"color1":"888888","color2":"aaaabb","colorOct":5,"colorPersistence":0.5,"octaves":3,"radius":1.9},
+"mesh":{"type":"NoiseMesh","divisions":6,"color1":"333333","color2":"555555","colorOct":5,"colorPersistence":0.5,"octaves":3,"radius":1.9},
   "orbitRadius":999,  
   "parent":"sun",
   "radius":12,
   "research":{"root":true, "requiresUnlock":false,"planet":"dapl_main","description":"a failed star. this solar system has low enemy presence"},
   "sectorSize":"4"
-  "updateLighting":false,
+  "updateLighting":true,
  
 }
