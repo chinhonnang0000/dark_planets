@@ -1,6 +1,7 @@
 Events.on(ContentInitEvent, e =>
   {
     init_random();
+    Vars.content.planet("dark_planets-dapl_main").generator = new SerpuloPlanetGenertor();
   })
 var dapl_main_gen = extenc(SerpuloPlanetGenerator,{});
 
