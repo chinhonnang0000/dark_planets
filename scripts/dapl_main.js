@@ -52,7 +52,7 @@ function get_random_tile()
     case 1: return Blocks.redStone;
     case 2: return Blocks.denseRedStone;
     case 3: return Blocks.rhyolite;
-    case 4: return Blocks.roughRyholite;
+    case 4: return Blocks.roughRhyolite;
     case 5: return Blocks.stone; 
   }
   return Blocks.coreZone; 
