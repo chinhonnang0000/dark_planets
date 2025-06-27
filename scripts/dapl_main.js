@@ -8,6 +8,7 @@ var dapl_main_gen = extend(SerpuloPlanetGenerator,
 {
 getBlock(po)
 {
+  return Blocks.coreZone // testing some errors
   var height = rawHeight(po) * 1.2;
   var px = position.x * sclx, py = position.y * scly, pz = position.z * sclz;
   var temp = Mathf.clamp(Math.abs(py * 2) / sclr);
