@@ -209,7 +209,7 @@ function get_block(po)
 function get_tile(a,b)
 {
   var c = Math.floor(a); var d = Math.floor(b); // bugs: undefined blocks detected. 
-  if(total_tiles[c][d] == null) {return Blocks.coreZone;}
+  if(total_tiles[c][d] == null) {return Blocks.carbonVent;}
   if(c >=0 && d >= 0){return total_tiles[c][d];}
   return Blocks.coreZone;
 }
