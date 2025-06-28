@@ -273,4 +273,4 @@ function generate_tile_system()
     }
 } 
 
-function raw_height(po){return (Math.pow(Simplex.noise3d(srh_seed, 7, 0.5, 0.34, position.x * sclx, position.y * scly + heightYOffset, position.z * sclz) * rh_sclh, rh_powe) + wos) / (1 + wos);}
+function raw_height(po){return (Math.pow(Simplex.noise3d(rh_seed, 7, 0.5, 0.34, position.x * sclx, position.y * scly + heightYOffset, position.z * sclz) * rh_sclh, rh_powe) + wos) / (1 + wos);}
