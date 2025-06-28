@@ -273,3 +273,5 @@ function generate_tile_system()
       a =a+1; 
     }
 } 
+
+function raw_height(po){}
