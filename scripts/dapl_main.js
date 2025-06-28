@@ -15,15 +15,15 @@ getBlock(po)
   var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
   temp = Mathf.lerp(temp, tnoise, 0.5);
   height = Mathf.clamp(height);
-  var res = get_tile(Mathf.clamp(temp * 12,0,11),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
+  var res = get_tile(Mathf.clamp(temp * floor_levels,0,floor_levels-1),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
   return res;
 },
 getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sand; co.set(block.mapColor).a(1 - bl.albedo);},  
 generate(ti,se)
 {
   init_random();
-   this.tiles = ti; this.sector = se; 
-      const rand = this.rand; rand.setSeed(se.id);
+   this.tiles = ti; this.sector = se ; 
+      const rand = this.rand; rand.setSeed(se.id+ Math.floor(Math.random * 999999999));
 
        //tile, sector
        var gen = new TileGen();
@@ -176,6 +176,11 @@ generate(ti,se)
         state.rules.enemyCoreBuildRadius = 480;
         state.rules.spawns = Waves.generate(difficulty, new Rand(), state.rules.attackMode);
 },
+genTile(po,ti)
+{
+  ti.floor = getBlock(po);
+  if(Ridged.noise3d(seed + 1, po.x, po.y, po.z, 2, 22) > ocu){tile.block = Blocks.air;}
+},
 rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
@@ -192,6 +197,7 @@ var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.s
 
 var floor_levels; 
 var ore_scl1,ore_scl2;
+var ocu = 0.31; 
 var sclr,sclx,scly,sclz; 
 var this_pl;
 var total_tiles =[]; 
@@ -206,7 +212,7 @@ function get_tile(a,b)
 }
 function get_random_tile()
 {
-  var a = Math.floor(Math.random() * 6);
+  var a = Math.floor(Math.random() * 9);
   switch(a)
   {
     case 0: return Blocks.ferricStone; 
@@ -215,6 +221,8 @@ function get_random_tile()
     case 3: return Blocks.rhyolite;
     case 4: return Blocks.roughRhyolite;
     case 5: return Blocks.stone; 
+    case 7: return Blocks.coreZone;
+    case 8: return Blocks.carbonStone; 
   }
   return Blocks.coreZone; 
 }
@@ -244,13 +252,14 @@ function init_random()
   sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
   ore_scl1 = 40 + Math.random() * 100; ore_scl2 = 30 + Math.random() * 75;
+  ocu = Math.random() * 0.6; 
 
   generate_tile_system();
 }
 function generate_tile_system()
 {
   total_tiles = new Array(); 
-  var a = 0; var b =0; while(a < 12)
+  var a = 0; var b =0; while(a < floor_levels)
     {
        total_tiles[a] = new Array();
       total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile())
