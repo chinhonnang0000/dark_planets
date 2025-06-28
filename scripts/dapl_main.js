@@ -3,6 +3,7 @@ Events.on(ContentInitEvent, e =>
     this_pl = Vars.content.planet("dark_planets-dapl_main");
     init_random();
     this_pl.generator = new SerpuloPlanetGenerator();
+    this_pl.lightSrcTo = 0.01;
   })
 var dapl_main_gen = extend(SerpuloPlanetGenerator,
 {
@@ -14,7 +15,7 @@ getBlock(po)
   var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
   temp = Mathf.lerp(temp, tnoise, 0.5);
   height = Mathf.clamp(height);
-  var res = get_tile(Mathf.clamp(temp * 12,0,floor_levels-1),Mathf.clamp(height * 12,0,floor_levels-1)); 
+  var res = get_tile(Mathf.clamp(temp * 12,0,11),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
   return res;
 },
 getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sand; co.set(block.mapColor).a(1 - bl.albedo);},  
