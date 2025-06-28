@@ -198,7 +198,7 @@ function get_block(po)
   var height = raw_height(po) * 1.2;
   var px = po.x * sclx, py = po.y * scly, pz = po.z * sclz;
   var temp = Mathf.clamp(Math.abs(py * 2) / sclr);
-  var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
+  var tnoise = Simplex.noise3d(rh_seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
   temp = Mathf.lerp(temp, tnoise, 0.5);
   height = Mathf.clamp(height);
   var res = get_tile(Mathf.clamp(temp * floor_levels,0,floor_levels-1),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
