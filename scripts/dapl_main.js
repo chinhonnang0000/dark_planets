@@ -169,7 +169,7 @@ generate(ti,se)
 genTile(po,ti)
 {
   ti.floor = get_block(po);
-  if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){tile.block = Blocks.air;}
+  if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){ti.block = Blocks.air;}
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
