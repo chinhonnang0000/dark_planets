@@ -247,7 +247,7 @@ function get_random_tile_group()
 
 function init_random()
 {
-  gt_seet = Math.floor(Math.random() * 999999999); gt_scal = 20 * Math.pow(2,Math.random()); 
+  gt_seed = Math.floor(Math.random() * 999999999); gt_scal = 20 * Math.pow(2,Math.random()); 
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
   rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = Math.random() * 4.5; rh_yofs = Math.random() * 95;
