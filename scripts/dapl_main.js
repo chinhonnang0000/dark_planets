@@ -145,8 +145,8 @@ generate(ti,se)
                var entry = ores.get(i);
                var freq = frequencies.get(i);
                
-               if(Math.abs(0.5 - this.noiseOct(offsetX, offsetY + i * 999, 0, 0, (40 + i))) > 0.2 + i * 0.01 &&
-                   Math.abs(0.5 - this.noiseOct(offsetX, offsetY - i * 999, 0, 0, (30 + i))) > 0.3 + freq){
+               if(Math.abs(0.5 - this.noiseOct(offsetX, offsetY + i * 999, 1, 0.1, (ore_scl1 + i))) > 0.2 + i * 0.01 &&
+                   Math.abs(0.5 - this.noiseOct(offsetX, offsetY - i * 999, 1, 0.1, (ore_scl2 + i))) > 0.3 + freq){
                    this.ore = entry;
                    break;
                };    
@@ -191,6 +191,7 @@ var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
 var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
+var ore_sc11,ore_scl2;
 var sclr,sclx,scly,sclz; 
 var this_pl;
 var total_tiles =[]; 
@@ -242,6 +243,7 @@ function init_random()
   scly = 5 * Math.pow(2,Math.random());
   sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
+  ore_scl1 = 40 + rand(40,100); ore_scl2 = 30 + rand(30,75);
 
   generate_tile_system();
 }
