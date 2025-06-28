@@ -196,7 +196,7 @@ var wos = 0.07;
 function get_block(po)
 {
   var height = raw_height(po) * 1.2;
-  var px = position.x * sclx, py = position.y * scly, pz = position.z * sclz;
+  var px = po.x * sclx, py = po.y * scly, pz = po.z * sclz;
   var temp = Mathf.clamp(Math.abs(py * 2) / sclr);
   var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
   temp = Mathf.lerp(temp, tnoise, 0.5);
