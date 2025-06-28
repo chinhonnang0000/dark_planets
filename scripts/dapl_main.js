@@ -248,7 +248,7 @@ function init_random()
 {
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
-  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = KMath.random() * 4.5; 
+  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = Math.random() * 4.5; 
   sclr = 5 * Math.pow(2,Math.random());
   sclx = 5 * Math.pow(2,Math.random());  scly = 5 * Math.pow(2,Math.random());  sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
