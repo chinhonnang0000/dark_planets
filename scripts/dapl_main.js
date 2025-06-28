@@ -23,7 +23,7 @@ generate(ti,se)
 {
   init_random();
    this.tiles = ti; this.sector = se ; 
-      const rand = this.rand; rand.setSeed(se.id+ Math.floor(Math.random * 999999999));
+      const rand = this.rand; rand.setSeed(se.id+ Math.floor(Math.random() * 999999999));
 
        //tile, sector
        var gen = new TileGen();
