@@ -191,7 +191,7 @@ var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
 var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
-var ore_sc11,ore_scl2;
+var ore_scl1,ore_scl2;
 var sclr,sclx,scly,sclz; 
 var this_pl;
 var total_tiles =[]; 
