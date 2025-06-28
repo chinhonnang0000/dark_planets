@@ -237,7 +237,7 @@ function get_random_tile_group()
   else if(a < 3) return floors_wdar;
   else if(a < 4) return floors_wlig;
   else if(a < 5) return floors_spor;
-  else if(a < 6) return floors_olis;
+  else if(a < 6) return floors_oils;
   else if(a < 7) return floors_cold;
   return [Blocks.coreZone,Blocks.coreZone,Blocks.coreZone];
 }
