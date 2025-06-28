@@ -209,7 +209,6 @@ function get_block(po)
 function get_tile(a,b)
 {
   var c = Math.floor(a); var d = Math.floor(b);
-  if(total_tiles[c][d] == null) return Blocks.coreZone;
   if(c >=0 && d >= 0){return total_tiles[c][d];}
   return Blocks.coreZone;
 }
@@ -232,17 +231,15 @@ function get_random_tile()
 
 function get_random_tile_group()
 {
-  var a = Math.floor(Math.random() * 7);
-  switch (a){
-    case 0: return floors_arky;
-    case 1: return floors_volc;
-    case 2: return floors_wdar;
-    case 3: return floors_wlig;
-    case 4: return floors_spor;
-    case 5: return floors_oils;
-    case 6: return floors_cold;
-  }
-  return [get_random_tile(),get_random_tile(),get_random_tile()]; 
+  var a = Math.random() * 7;
+  if(a < 1) return floors_arky;
+  else if(a < 2) return floors_voic;
+  else if(a < 3) return floors_wdar;
+  else if(a < 4) return floors_wlig;
+  else if(a < 5) return floors_spor;
+  else if(a < 6) return floors_olis;
+  else if(a < 7) return floors_cold;
+  return [Blocks.coreZone,Blocks.coreZone,Blocks.coreZone];
 }
 
 function init_random()
