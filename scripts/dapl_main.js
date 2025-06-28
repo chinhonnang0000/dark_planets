@@ -169,7 +169,7 @@ generate(ti,se)
 genTile(po,ti)
 {
   ti.floor = get_block(po);
-  if(Ridged.noise3d(seed + 1, po.x, po.y, po.z, 2, 22) > ocu){tile.block = Blocks.air;}
+  if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){tile.block = Blocks.air;}
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
@@ -185,6 +185,7 @@ var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
 var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
+var gt_seed, gt_scal; 
 var ore_scl1,ore_scl2;
 var ocu = 0.31; 
 var rh_seed, rh_sclh, rh_powe, rh_yofs;
@@ -246,6 +247,7 @@ function get_random_tile_group()
 
 function init_random()
 {
+  gt_seet = Math.floor(Math.random() * 999999999); gt_scal = 20 * Math.pow(2,Math.random()); 
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
   rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = Math.random() * 4.5; rh_yofs = Math.random() * 95;
