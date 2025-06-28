@@ -187,7 +187,7 @@ var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.s
 var floor_levels; 
 var ore_scl1,ore_scl2;
 var ocu = 0.31; 
-var rh_seed, rh_sclh, rh_powe;
+var rh_seed, rh_sclh, rh_powe, rh_yofs;
 var sclr,sclx,scly,sclz; 
 var this_pl;
 var total_tiles =[]; 
@@ -248,7 +248,7 @@ function init_random()
 {
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
-  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = Math.random() * 4.5; 
+  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = Math.random() * 4.5; rh_yofs = Math.random() * 95;
   sclr = 5 * Math.pow(2,Math.random());
   sclx = 5 * Math.pow(2,Math.random());  scly = 5 * Math.pow(2,Math.random());  sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
@@ -273,4 +273,4 @@ function generate_tile_system()
     }
 } 
 
-function raw_height(po){return (Math.pow(Simplex.noise3d(rh_seed, 7, 0.5, 0.34, position.x * sclx, position.y * scly + heightYOffset, position.z * sclz) * rh_sclh, rh_powe) + wos) / (1 + wos);}
+function raw_height(po){return (Math.pow(Simplex.noise3d(rh_seed, 7, 0.5, 0.34, po.x * sclx, po.y * scly + rh_yofs, po.z * sclz) * rh_sclh, rh_powe) + wos) / (1 + wos);}
