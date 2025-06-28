@@ -7,17 +7,7 @@ Events.on(ContentInitEvent, e =>
   })
 var dapl_main_gen = extend(SerpuloPlanetGenerator,
 {
-getBlock(po)
-{
-  var height = rawHeight(po) * 1.2;
-  var px = position.x * sclx, py = position.y * scly, pz = position.z * sclz;
-  var temp = Mathf.clamp(Math.abs(py * 2) / sclr);
-  var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
-  temp = Mathf.lerp(temp, tnoise, 0.5);
-  height = Mathf.clamp(height);
-  var res = get_tile(Mathf.clamp(temp * floor_levels,0,floor_levels-1),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
-  return res;
-},
+
 getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sand; co.set(block.mapColor).a(1 - bl.albedo);},  
 generate(ti,se)
 {
@@ -178,7 +168,7 @@ generate(ti,se)
 },
 genTile(po,ti)
 {
-  ti.floor = getBlock(po);
+  ti.floor = get_block(po);
   if(Ridged.noise3d(seed + 1, po.x, po.y, po.z, 2, 22) > ocu){tile.block = Blocks.air;}
 },
 rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
@@ -202,6 +192,18 @@ var sclr,sclx,scly,sclz;
 var this_pl;
 var total_tiles =[]; 
 var wos = 0.07;
+
+function get_block(po)
+{
+  var height = rawHeight(po) * 1.2;
+  var px = position.x * sclx, py = position.y * scly, pz = position.z * sclz;
+  var temp = Mathf.clamp(Math.abs(py * 2) / sclr);
+  var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
+  temp = Mathf.lerp(temp, tnoise, 0.5);
+  height = Mathf.clamp(height);
+  var res = get_tile(Mathf.clamp(temp * floor_levels,0,floor_levels-1),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
+  return res;
+}
 
 function get_tile(a,b)
 {
