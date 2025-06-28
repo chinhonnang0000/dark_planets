@@ -243,7 +243,7 @@ function init_random()
   scly = 5 * Math.pow(2,Math.random());
   sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
-  ore_scl1 = 40 + rand(40,100); ore_scl2 = 30 + rand(30,75);
+  ore_scl1 = 40 + Math.random() * 100; ore_scl2 = 30 + Math.random() * 75;
 
   generate_tile_system();
 }
