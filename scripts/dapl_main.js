@@ -171,7 +171,6 @@ genTile(po,ti)
   ti.floor = get_block(po);
   if(Ridged.noise3d(seed + 1, po.x, po.y, po.z, 2, 22) > ocu){tile.block = Blocks.air;}
 },
-rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
     return Simplex.noise3d(1, octaves, falloff, 0.4/scl, v.x, v.y, v.z);
@@ -274,4 +273,4 @@ function generate_tile_system()
     }
 } 
 
-function raw_height(po){}
+function raw_height(po){return (Math.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * sclx, position.y * scly + heightYOffset, position.z * sclz) * 1.01, 2.3) + wos) / (1 + wos);}
