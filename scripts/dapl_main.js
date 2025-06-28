@@ -233,7 +233,7 @@ function get_random_tile_group()
 {
   var a = Math.random() * 7;
   if(a < 1) return floors_arky;
-  else if(a < 2) return floors_voic;
+  else if(a < 2) return floors_volc;
   else if(a < 3) return floors_wdar;
   else if(a < 4) return floors_wlig;
   else if(a < 5) return floors_spor;
