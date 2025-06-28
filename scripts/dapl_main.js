@@ -145,8 +145,8 @@ generate(ti,se)
                var entry = ores.get(i);
                var freq = frequencies.get(i);
                
-               if(Math.abs(0.5 - this.noiseOct(offsetX, offsetY + i * 999, 2, 0.5, (40 + i))) > 0.2 + i * 0.01 &&
-                   Math.abs(0.5 - this.noiseOct(offsetX, offsetY - i * 999, 1, 0.3, (30 + i))) > 0.3 + freq){
+               if(Math.abs(0.5 - this.noiseOct(offsetX, offsetY + i * 999, 0, 0, (40 + i))) > 0.2 + i * 0.01 &&
+                   Math.abs(0.5 - this.noiseOct(offsetX, offsetY - i * 999, 0, 0, (30 + i))) > 0.3 + freq){
                    this.ore = entry;
                    break;
                };    
