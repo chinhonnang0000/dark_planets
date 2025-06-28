@@ -202,7 +202,7 @@ function get_block(po)
   var tnoise = Simplex.noise3d(rh_seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
   temp = Mathf.lerp(temp, tnoise, 0.5);
   height = Mathf.clamp(height);
-  var res = get_tile(Mathf.clamp(temp * 12,0,11),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
+  var res = get_tile(Math.abs(Mathf.clamp(temp * 12,0,11)),Math.abs(Mathf.clamp(height * floor_levels,0,floor_levels-1))); 
   return res;
 }
 
@@ -210,8 +210,7 @@ function get_tile(a,b)
 {
   var c = Math.floor(a); var d = Math.floor(b); // bugs: undefined blocks detected. 
   if(total_tiles[c][d] == null) {return Blocks.carbonVent;}
-  if(c >=0 && d >= 0){return total_tiles[c][d];}
-  return Blocks.coreZone;
+  return total_tiles[c][d]
 }
 function get_random_tile()
 {
