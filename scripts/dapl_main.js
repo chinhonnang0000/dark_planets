@@ -3,7 +3,7 @@ Events.on(ContentInitEvent, e =>
     this_pl = Vars.content.planet("dark_planets-dapl_main");
     init_random();
     this_pl.generator = dapl_main_gen; 
-    this_pl.lightSrcTo = 0.01;
+    //this_pl.lightSrcTo = 0.01; // disabled for tilegen evaluating purpose 
   })
 var dapl_main_gen = extend(SerpuloPlanetGenerator,
 {
@@ -202,7 +202,7 @@ function get_block(po)
   var tnoise = Simplex.noise3d(rh_seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
   temp = Mathf.lerp(temp, tnoise, 0.5);
   height = Mathf.clamp(height);
-  var res = get_tile(Mathf.clamp(temp * floor_levels,0,floor_levels-1),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
+  var res = get_tile(Mathf.clamp(temp * 12,0,11),Mathf.clamp(height * floor_levels,0,floor_levels-1)); 
   return res;
 }
 
@@ -260,7 +260,7 @@ function init_random()
 function generate_tile_system()
 {
   total_tiles = new Array(); 
-  var a = 0; var b =0; while(a < floor_levels)
+  var a = 0; var b =0; while(a < 12)
     {
        total_tiles[a] = new Array();
       total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile())
