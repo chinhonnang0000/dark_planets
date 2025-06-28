@@ -171,7 +171,6 @@ genTile(po,ti)
   ti.floor = get_block(po);
   if(Ridged.noise3d(seed + 1, po.x, po.y, po.z, 2, 22) > ocu){tile.block = Blocks.air;}
 },
-rawHeight(po){return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5, 0.34, position.x * scl, position.y * scl + heightYOffset, position.z * scl) * heightScl, 2.3) + wos) / (1 + wos);},
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
     return Simplex.noise3d(1, octaves, falloff, 0.4/scl, v.x, v.y, v.z);
@@ -186,16 +185,19 @@ var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
 var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
+var hs1,hs2; 
 var ore_scl1,ore_scl2;
 var ocu = 0.31; 
-var sclr,sclx,scly,sclz; 
+var pwr1; 
+var sclh,sclr,sclx,scly,sclz; 
+var sed_main = Math.floor(Math.random() * 999999999;)
 var this_pl;
 var total_tiles =[]; 
 var wos = 0.07;
 
 function get_block(po)
 {
-  var height = rawHeight(po) * 1.2;
+  var height = raw_height(po) * 1.2;
   var px = position.x * sclx, py = position.y * scly, pz = position.z * sclz;
   var temp = Mathf.clamp(Math.abs(py * 2) / sclr);
   var tnoise = Simplex.noise3d(seed, 7, 0.56, 0.33, px, py + 999 - 0.1, pz);
@@ -248,10 +250,12 @@ function init_random()
 {
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
+  hs1 = Math.random(); hs2 = Math.random(); 
+  pwr1 = Math.random() * 4.5; 
+  sclh = 0.8 + Math.random() * 0.42;  
   sclr = 5 * Math.pow(2,Math.random());
-  sclx = 5 * Math.pow(2,Math.random());
-  scly = 5 * Math.pow(2,Math.random());
-  sclz = 5 * Math.pow(2,Math.random());
+  sclx = 5 * Math.pow(2,Math.random()); scly = 5 * Math.pow(2,Math.random());  sclz = 5 * Math.pow(2,Math.random());
+  sed_main = Math.floor(Math.random() * 999999999;
   floor_levels = 20 + Math.floor(Math.random() * 50);
   ore_scl1 = 40 + Math.random() * 100; ore_scl2 = 30 + Math.random() * 75;
   ocu = Math.random() * 0.6; 
@@ -273,3 +277,5 @@ function generate_tile_system()
       a =a+1; 
     }
 } 
+
+function rawH_height(po){return (Mathf.pow(Simplex.noise3d(sed_main, 7, hs1, hs2, position.x * sclx, position.y * scly + heightYOffset, position.z * sclz) * sclh, pwr1) + wos) / (1 + wos);},
