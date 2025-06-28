@@ -208,7 +208,8 @@ function get_block(po)
 
 function get_tile(a,b)
 {
-  var c = Math.floor(a); var d = Math.floor(b);
+  var c = Math.floor(a); var d = Math.floor(b); // bugs: undefined blocks detected. 
+  if(total_floors[c][d] == null) {return Blocks.coreZone;}
   if(c >=0 && d >= 0){return total_tiles[c][d];}
   return Blocks.coreZone;
 }
@@ -263,7 +264,7 @@ function generate_tile_system()
     {
        total_tiles[a] = new Array();
       total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile())
-      b =0; while (b < floor_levels/4)
+      b =0; while (b < floor_levels)
       {
         total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile());
         b = b+1; 
