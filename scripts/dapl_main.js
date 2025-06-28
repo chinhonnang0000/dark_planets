@@ -3,7 +3,7 @@ Events.on(ContentInitEvent, e =>
     this_pl = Vars.content.planet("dark_planets-dapl_main");
     init_random();
     this_pl.generator = dapl_main_gen; 
-    this_pl.lightSrcTo = 0;
+    this_pl.lightSrcTo = 0.01;
   })
 var dapl_main_gen = extend(SerpuloPlanetGenerator,
 {
