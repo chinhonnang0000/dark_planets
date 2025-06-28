@@ -242,7 +242,7 @@ function get_random_tile_group()
     case 5: return floors_oils;
     case 6: return floors_cold;
   }
-  return [Blocks.coreZone,Blocks.coreZone,Blocks.coreZone]; 
+  return [get_random_tile(),get_random_tile(),get_random_tile()]; 
 }
 
 function init_random()
