@@ -37,8 +37,8 @@ generate(ti,se)
                var nscl = rand.random(20, 60);
                var stroke = rand.random(4, 12);
                
-               dapl_main_gen.brush(dapl_main_gen.pathfind(this.x, this.y, to.x, to.y, tile => (tile.solid() ? 5 : 0) + 
-               dapl_main_gen.noiseOct(tile.x, tile.y, 1, 1, 1 / nscl) * 60, Astar.manhattan), stroke);
+               dapl_main_gen.brush(dapl_main_gen.pathfind(this.x, this.y, to.x, to.y, tile => 
+                (tile.solid() ? 5 : 0) + dapl_main_gen.noiseOct(tile.x, tile.y, 1, 1, 1 / nscl) * 60, Astar.manhattan), stroke);
            }
        };
        
@@ -52,8 +52,8 @@ generate(ti,se)
        this.cells(4);    this.distort(10, 12);
        this.width = this.tiles.width;    this.height = this.tiles.height;
        var constraint = 1.3;
-       var radius = this.width / 2 
-       var rooms = rand.random(2, 5);
+       var radius = this.width / Math.random(); 
+       var rooms = rand.random(2, 5 + 0.00001 * this.getSectorSize(se) * this.getSectorSize(se));
        var roomseq = new Seq();
 
        for(var i = 0; i < rooms; i++){
@@ -117,6 +117,8 @@ generate(ti,se)
        var addscl = 1.3;
        
        var ores = Seq.with(Blocks.oreScrap); // all other ores moved to genTile to reduce lag. 
+       ores.add(Blocks.oreCoal);ores.add(Blocks.oreCopper); ores.add(Blocks.oreLead); // basic Serpulo
+       ores.add(Blocks.wallOreBeryllium);ores.add(Blocks.wallOreTungsten);
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.5 * addscl){ores.add(Blocks.wallOreThorium);};
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x + 1, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.2 * addscl){ores.add(Blocks.oreTitanium);};
 
@@ -124,8 +126,10 @@ generate(ti,se)
        for(var i = 0; i < ores.size; i++){
            frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);
        };
-
+       wallOre(Blocks.carbonWall, Blocks.graphiticWall, 35, 0.5);
+  
        this.pass((x, y) => {
+         
            if(!this.floor.asFloor().hasSurface()) return;
 
            var offsetX = x - 4, offsetY = y + 23;
@@ -170,17 +174,13 @@ genTile(po,ti)
   ti.block = ti.floor.asFloor().wall;
   if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){ti.block = Blocks.air;}
 
-   else if(ti.floor == Blocks.arkyicStone && Simplex.noise3d(seed_vark,2,0,dist_vark,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.arkyicVent; ti.block = Blocks.air;}
-   else if(ti.floor == Blocks.crystallineStone && Simplex.noise3d(seed_vcry,2,0,dist_vcry,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.crystallineVent; ti.block = Blocks.air;}
-   else if(ti.floor == Blocks.redStone && Simplex.noise3d(seed_vred,2,0,dist_vred,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.redStoneVent; ti.block = Blocks.air;}
-   else if(ti.floor == Blocks.rhyolite && Simplex.noise3d(seed_vrhy,2,0,dist_vrhy,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.rhyoliteVent; ti.block = Blocks.air;}
-   else if(ti.floor == Blocks.yellowStone && Simplex.noise3d(seed_vyel,2,0,dist_vyel,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.yellowStoneVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.arkyicStone && Simplex.noise3d(seed_vark,1,0,dist_vark,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.arkyicVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.crystallineStone && Simplex.noise3d(seed_vcry,1,0,dist_vcry,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.crystallineVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.redStone && Simplex.noise3d(seed_vred,1,0,dist_vred,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.redStoneVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.rhyolite && Simplex.noise3d(seed_vrhy,1,0,dist_vrhy,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.rhyoliteVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.yellowStone && Simplex.noise3d(seed_vyel,1,0,dist_vyel,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.yellowStoneVent; ti.block = Blocks.air;}
 
-   if(Simplex.noise3d(seed_bery,2,0,dist_bery,po.x,po.y,po.z) > 0.6 && ti.floor == Blocks.beryllicStone){ti.overlay = Blocks.wallOreBeryllium;} // the script ran through here. 
-   if(Simplex.noise3d(seed_coal,2,0,dist_coal,po.x,po.y,po.z) > 0.6 && ti.floor == Blocks.carbonStone){ti.overlay = Blocks.oreCoal;} 
-   if(Simplex.noise3d(seed_copp,2,0,dist_copp,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreCopper;}
-   if(Simplex.noise3d(seed_lead,2,0,dist_lead,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreLead;}
-   if(Simplex.noise3d(seed_tung,2,0,dist_tung,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.wallOreTungsten;}
+   // adding resources here does not work.
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
