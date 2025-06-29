@@ -12,7 +12,7 @@ getColor(po,co){var bl = this.getBlock(po); if(bl == Blocks.salt) bl = Blocks.sa
 generate(ti,se)
 {
   init_random();
-   this.tiles = ti; this.sector = se ; 
+  this.tiles = ti; this.sector = se ; 
       const rand = this.rand; rand.setSeed(se.id+ Math.floor(Math.random() * 999999999));
 
        //tile, sector
@@ -37,8 +37,8 @@ generate(ti,se)
                var nscl = rand.random(20, 60);
                var stroke = rand.random(4, 12);
                
-               dapl_main_gen.brush(dapl_main_gen.pathfind(this.x, this.y, to.x, to.y, tile => 
-                (tile.solid() ? 5 : 0) + dapl_main_gen.noiseOct(tile.x, tile.y, 1, 1, 1 / nscl) * 60, Astar.manhattan), stroke);
+               dapl_main_gen.brush(dapl_main_gen.pathfind(this.x, this.y, to.x, to.y, tile => (tile.solid() ? 5 : 0) + 
+               dapl_main_gen.noiseOct(tile.x, tile.y, 1, 1, 1 / nscl) * 60, Astar.manhattan), stroke);
            }
        };
        
@@ -52,8 +52,8 @@ generate(ti,se)
        this.cells(4);    this.distort(10, 12);
        this.width = this.tiles.width;    this.height = this.tiles.height;
        var constraint = 1.3;
-       var radius = this.width * (Math.random() + 1); 
-       var rooms = rand.random(3, 9);
+       var radius = this.width / 2 
+       var rooms = rand.random(2, 5);
        var roomseq = new Seq();
 
        for(var i = 0; i < rooms; i++){
@@ -116,16 +116,18 @@ generate(ti,se)
        var nmag = 0.5; var scl = 5 + Math.random() * 5;
        var addscl = 1.3;
        
-       var ores = Seq.with(Blocks.oreScrap); // all other ores moved to genTile to reduce lag. 
+       var ores = Seq.with(Blocks.oreScrap);
        ores.add(Blocks.oreCoal);ores.add(Blocks.oreCopper); ores.add(Blocks.oreLead); // basic Serpulo
-       ores.add(Blocks.wallOreBeryllium);ores.add(Blocks.wallOreTungsten);
+       ores.add(Blocks.wallOreBeryllium);ores.add(Blocks.wallOreTungsten); // basic Erekir. 
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.5 * addscl){ores.add(Blocks.wallOreThorium);};
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x + 1, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.2 * addscl){ores.add(Blocks.oreTitanium);};
 
        var frequencies = new FloatSeq();
-       for(var i = 0; i < ores.size; i++){frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);}
+       for(var i = 0; i < ores.size; i++){
+           frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);
+       };
+
        this.pass((x, y) => {
-         
            if(!this.floor.asFloor().hasSurface()) return;
 
            var offsetX = x - 4, offsetY = y + 23;
