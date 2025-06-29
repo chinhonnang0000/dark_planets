@@ -269,7 +269,7 @@ function generate_tile_system()
         var c = Math.floor(Math.random() * 0.999);
         switch(c)
         {
-          case 0: total_tiles[a].push(Blocks.beryllicStone); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Block.beryllicStone); b = b+5;
+          case 0: total_tiles[a].push(Blocks.beryllicStone); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Block.beryllicStone); b = b+5; break;
         }
         total_tiles[a].push(get_random_tile());
         b = b+1; 
