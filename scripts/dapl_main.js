@@ -278,7 +278,7 @@ function generate_tile_system()
           case 2: total_tiles[a].push(Blocks.darksand); total_tiles[a].push(Blocks.darksandWater); total_tiles[a].push(Blocks.darksand); b = b+3; break; 
           case 4: total_tiles[a].push(Blocks.moss); total_tiles[a].push(Blocks.sporeMoss); total_tiles[a].push(Blocks.moss); b = b+3; break; 
           case 5: total_tiles[a].push(Blocks.snow); total_tiles[a].push(Blocks.iceSnow); total_tiles[a].push(Blocks.ice); total_tiles[a].push(Blocks.iceSnow); total_tiles[a].push(Blocks.snow); b = b+5; break; 
-          case 6: total_tiles[a].push(Blocks.crystalineStone); total_tiles[a].push(Blocks.crystalFloor); total_tiles[a].push(Blocks.crystalineStone); b = b+3; break; 
+          case 6: total_tiles[a].push(Blocks.crystallineStone); total_tiles[a].push(Blocks.crystalFloor); total_tiles[a].push(Blocks.crystallineStone); b = b+3; break; 
         }
         total_tiles[a].push(get_random_tile());
         b = b+1; 
