@@ -123,11 +123,7 @@ generate(ti,se)
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x + 1, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.2 * addscl){ores.add(Blocks.oreTitanium);};
 
        var frequencies = new FloatSeq();
-       for(var i = 0; i < ores.size; i++){
-           frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);
-       };
-       wallOre(Blocks.carbonWall, Blocks.graphiticWall, 35, 0.5);
-  
+       for(var i = 0; i < ores.size; i++){frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);}
        this.pass((x, y) => {
          
            if(!this.floor.asFloor().hasSurface()) return;
