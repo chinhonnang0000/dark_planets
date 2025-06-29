@@ -169,7 +169,7 @@ genTile(po,ti)
   ti.floor = get_block(po);
   ti.block = ti.floor.asFloor().wall;
   if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){ti.block = Blocks.air;}
-  if(ti.block == Blocks.air && rand.chance(0.03)){ti.block = ti.floor.asFloor().decoration;}
+  if(ti.block == Blocks.air && Math.random() < 0.03){ti.block = ti.floor.asFloor().decoration;}
   
    if(ti.floor == Blocks.arkyicStone && Simplex.noise3d(seed_vark,1,0,dist_vark,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.arkyicVent; ti.block = Blocks.air;}
    else if(ti.floor == Blocks.carbonStone && Simplex.noise3d(seed_vcar,1,0,dist_vcar,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.carbonVent; ti.block = Blocks.air;}
