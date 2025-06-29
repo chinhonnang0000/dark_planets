@@ -270,7 +270,7 @@ function generate_tile_system()
         switch(c)
         {
           case 0: total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); b = b+3; break;
-          case 1: toral_tiles[a].push(Blocks.shale); total_tiles[a].push(Blocks.oil); total_tiles[a].push(Blocks.shale); b = b+3; break; 
+          case 1: total_tiles[a].push(Blocks.shale); total_tiles[a].push(Blocks.oil); total_tiles[a].push(Blocks.shale); b = b+3; break; 
         }
         total_tiles[a].push(get_random_tile());
         b = b+1; 
