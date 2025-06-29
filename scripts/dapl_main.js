@@ -53,7 +53,7 @@ generate(ti,se)
        this.width = this.tiles.width;    this.height = this.tiles.height;
        var constraint = 1.3;
        var radius = this.width / 2 
-       var rooms = rand.random(2, 5);
+       var rooms = rand.random(3, 9);
        var roomseq = new Seq();
 
        for(var i = 0; i < rooms; i++){
@@ -123,9 +123,7 @@ generate(ti,se)
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x + 1, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.2 * addscl){ores.add(Blocks.oreTitanium);};
 
        var frequencies = new FloatSeq();
-       for(var i = 0; i < ores.size; i++){
-           frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);
-       };
+       for(var i = 0; i < ores.size; i++){frequencies.add(rand.random(-0.1, 0.01) - i * 0.01 + poles * 0.04);};
 
        this.pass((x, y) => {
            if(!this.floor.asFloor().hasSurface()) return;
@@ -185,13 +183,6 @@ noiseOct(x, y, octaves, falloff, scl){
     return Simplex.noise3d(1, octaves, falloff, 0.4/scl, v.x, v.y, v.z);
 }
 });
-var floors_arky = [Blocks.BeryllicStone,Blocks.arkyicStone,Blocks.arkyciteFloor, Blocks.arkyicStone, Blocks.BeryllicStone];
-var floors_volc = [Blokss.dacite,Blocks.basalt,Blocks.hotrock,Blocks.magmarock,Block.slag,Blocks.magmarock,Blocks.hotrock,Blocks.basalt,Blokss.dacite]; // to insert core zone at random. 
-var floors_wdar = [Blocks.darksandWater,Blocks.darksand,Blocks.watar, Blocks.darksandWater, Blocks.darksand];
-var floors_wlig = [Blocks.sand,Blocks.sandwater,Blocks.water, Blocks.sandwater, Blocks.sand];
-var floors_spor = [Blocks.moss,Blocks.sporeMoss, Blocks.moss];
-var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
-var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
 var dist_bery, dist_coal, dist_copp, dist_lead, dist_tung; //common resources
