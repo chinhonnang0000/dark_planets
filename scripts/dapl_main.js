@@ -116,9 +116,7 @@ generate(ti,se)
        var nmag = 0.5; var scl = 5 + Math.random() * 5;
        var addscl = 1.3;
        
-       var ores = Seq.with(Blocks.oreScrap);
-       ores.add(Blocks.oreCoal);ores.add(Blocks.oreCopper); ores.add(Blocks.oreLead); // basic Serpulo
-       ores.add(Blocks.wallOreBeryllium);ores.add(Blocks.wallOreTungsten); // basic Erekir. 
+       var ores = Seq.with(Blocks.oreScrap); // all other ores moved to genTile to reduce lag. 
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.5 * addscl){ores.add(Blocks.wallOreThorium);};
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x + 1, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.2 * addscl){ores.add(Blocks.oreTitanium);};
 
@@ -169,7 +167,20 @@ generate(ti,se)
 genTile(po,ti)
 {
   ti.floor = get_block(po);
+  ti.block = ti.floor.asFloor().wall;
   if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){ti.block = Blocks.air;}
+
+   else if(ti.floor == Blocks.arkyicStone && Simplex.noise3d(seed_vark,2,0,dist_vark,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.arkyicVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.crystallineStone && Simplex.noise3d(seed_vcry,2,0,dist_vcry,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.crystallineVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.redStone && Simplex.noise3d(seed_vred,2,0,dist_vred,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.redStoneVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.rhyolite && Simplex.noise3d(seed_vrhy,2,0,dist_vrhy,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.rhyoliteVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.yellowStone && Simplex.noise3d(seed_vyel,2,0,dist_vyel,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.yellowStoneVent; ti.block = Blocks.air;}
+
+   if(Simplex.noise3d(seed_bery,2,0,dist_bery,po.x,po.y,po.z) > 0.6 && ti.floor == Blocks.beryllicStone){ti.overlay = Blocks.wallOreBeryllium;} // the script ran through here. 
+   if(Simplex.noise3d(seed_coal,2,0,dist_coal,po.x,po.y,po.z) > 0.6 && ti.floor == Blocks.carbonStone){ti.overlay = Blocks.oreCoal;} 
+   if(Simplex.noise3d(seed_copp,2,0,dist_copp,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreCopper;}
+   if(Simplex.noise3d(seed_lead,2,0,dist_lead,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreLead;}
+   if(Simplex.noise3d(seed_tung,2,0,dist_tung,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.wallOreTungsten;}
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
@@ -185,6 +196,10 @@ var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
 var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
+var dist_bery, dist_copper,dist_lead, dist_tung; //common resources
+var dist_vark, dist_vcry, dist_vcar, dist_vred, dist_vrhy, dist_vyel; 
+var seed_bery, seed_coal, seed_copp, seed_gent, seed_lead, seed_scra, seed_thor, seed_tita, seed_tung;
+var seed_vark, seed_vcry, seed_vcar, seed_vred, seed_vrhy, seed_vyel; 
 var gt_seed, gt_scal; 
 var ore_scl1,ore_scl2;
 var ocu = 0.31; 
@@ -253,6 +268,17 @@ function init_random()
   floor_levels = 20 + Math.floor(Math.random() * 50);
   ore_scl1 = 40 + Math.random() * 100; ore_scl2 = 30 + Math.random() * 75;
   ocu = Math.random() * 0.6; 
+
+  dist_bery = 40 + Math.random() * 20; seed_bery = Math.floor(Math.random() * 999999999); // erekir stuff
+  dist_copp = 40 + Math.random() * 20; seed_copp = Math.floor(Math.random() * 999999999);
+  dist_lead = 40 + Math.random() * 20; seed_lead = Math.floor(Math.random() * 999999999);
+  dist_tung = 40 + Math.random() * 20; seed_tung = Math.floor(Math.random() * 999999999); // erekir stuff. 
+  dist_vark = 90 + Math.random() * 20; seed_vark = Math.floor(Math.random() * 999999999); 
+  dist_vcar = 90 + Math.random() * 20; seed_vcar = Math.floor(Math.random() * 999999999); 
+  dist_vcry = 90 + Math.random() * 20; seed_vcry = Math.floor(Math.random() * 999999999); 
+  dist_vred = 90 + Math.random() * 20; seed_vred = Math.floor(Math.random() * 999999999); 
+  dist_vrhy = 90 + Math.random() * 20; seed_vrhy = Math.floor(Math.random() * 999999999); 
+  dist_vyel = 90 + Math.random() * 20; seed_vyel = Math.floor(Math.random() * 999999999); 
 
   generate_tile_system();
 }
