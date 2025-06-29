@@ -179,9 +179,9 @@ genTile(po,ti)
    else if(ti.floor == Blocks.yellowStone && Simplex.noise3d(seed_vyel,1,0,dist_vyel,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.yellowStoneVent; ti.block = Blocks.air;}
 
    // adding resources here does not work. Adding props
-   Simplex.noise3d(seed_coal,1,0,dist_coal,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreCoal;}
-   Simplex.noise3d(seed_copp,1,0,dist_copp,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreCopper;}
-   Simplex.noise3d(seed_lead,1,0,dist_lead,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreLead;}
+  if(Simplex.noise3d(seed_coal,1,0,dist_coal,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreCoal;}
+  if(Simplex.noise3d(seed_copp,1,0,dist_copp,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreCopper;}
+  if(Simplex.noise3d(seed_lead,1,0,dist_lead,po.x,po.y,po.z) > 0.7){ti.overlay = Blocks.oreLead;}
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
