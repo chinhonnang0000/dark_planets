@@ -271,7 +271,7 @@ function generate_tile_system()
         {
           case 0: total_tiles[a].push(Blocks.beryllicStone); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.beryllicStone);b = b+5; break;
           case 1: total_tiles[a].push(Blocks.shale); total_tiles[a].push(Blocks.tar); total_tiles[a].push(Blocks.shale); b = b+3; break; 
-          case 2: total_tiles[a].push(Blocks.darksand); total_tiles[a].push(Blocks.darksandWater); total_tiles[a].push(Blocks.darkssand); b = b+3; break; 
+          case 2: total_tiles[a].push(Blocks.darksand); total_tiles[a].push(Blocks.darksandWater); total_tiles[a].push(Blocks.darksand); b = b+3; break; 
         }
         total_tiles[a].push(get_random_tile());
         b = b+1; 
