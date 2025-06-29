@@ -117,7 +117,7 @@ generate(ti,se)
        var addscl = 1.3;
        
        var ores = Seq.with(Blocks.oreScrap);
-       // ores.add(Blocks.oreCoal);ores.add(Blocks.oreCopper); ores.add(Blocks.oreLead); // basic Serpulo
+       ores.add(Blocks.oreCoal);ores.add(Blocks.oreCopper); ores.add(Blocks.oreLead); // basic Serpulo
        ores.add(Blocks.wallOreBeryllium);ores.add(Blocks.wallOreTungsten); // basic Erekir. 
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.5 * addscl){ores.add(Blocks.wallOreThorium);};
        if(Simplex.noise3d(1, 2, 0.5, scl, this.sector.tile.v.x + 1, this.sector.tile.v.y, this.sector.tile.v.z) * nmag + poles > 0.2 * addscl){ores.add(Blocks.oreTitanium);};
@@ -178,10 +178,6 @@ genTile(po,ti)
    else if(ti.floor == Blocks.rhyolite && Simplex.noise3d(seed_vrhy,1,0,dist_vrhy,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.rhyoliteVent; ti.block = Blocks.air;}
    else if(ti.floor == Blocks.yellowStone && Simplex.noise3d(seed_vyel,1,0,dist_vyel,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.yellowStoneVent; ti.block = Blocks.air;}
 
-   // adding resources here does not work. Adding props
-  if(Simplex.noise3d(seed_coal,1,0,dist_coal,po.x,po.y,po.z) > 0.7){ti.overlay=Blocks.oreCoal.asFloor();}
-  if(Simplex.noise3d(seed_copp,1,0,dist_copp,po.x,po.y,po.z) > 0.7){ti.overlay=Blocks.oreCopper.asFloor();}
-  if(Simplex.noise3d(seed_lead,1,0,dist_lead,po.x,po.y,po.z) > 0.7){ti.overlay=Blocks.oreLead.asFloor();}
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
