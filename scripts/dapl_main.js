@@ -196,9 +196,9 @@ var floors_oils = [Blocks.shale,Blocks.oil,Blocks.shale];
 var floors_cold = [Blocks.snow,Blocks.iceSnow,Blocks.ice,Blocks.iceSnow,Blocks.snow]; 
 
 var floor_levels; 
-var dist_bery, dist_copper,dist_lead, dist_tung; //common resources
+var dist_bery, dist_coal, dist_copp, dist_lead, dist_tung; //common resources
 var dist_vark, dist_vcry, dist_vcar, dist_vred, dist_vrhy, dist_vyel; 
-var seed_bery, seed_coal, seed_copp, seed_gent, seed_lead, seed_scra, seed_thor, seed_tita, seed_tung;
+var seed_bery, seed_coal, seed_copp,nseed_lead, seed_tung;
 var seed_vark, seed_vcry, seed_vcar, seed_vred, seed_vrhy, seed_vyel; 
 var gt_seed, gt_scal; 
 var ore_scl1,ore_scl2;
