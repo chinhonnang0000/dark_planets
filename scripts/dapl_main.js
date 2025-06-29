@@ -53,7 +53,7 @@ generate(ti,se)
        this.width = this.tiles.width;    this.height = this.tiles.height;
        var constraint = 1.3;
        var radius = this.width * (Math.random() + 1); 
-       var rooms = rand.random(2, 5 + 0.00001 * this.getSectorSize(se) * this.getSectorSize(se));
+       var rooms = rand.random(3, 9);
        var roomseq = new Seq();
 
        for(var i = 0; i < rooms; i++){
