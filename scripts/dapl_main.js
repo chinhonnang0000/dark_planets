@@ -169,14 +169,17 @@ genTile(po,ti)
   ti.floor = get_block(po);
   ti.block = ti.floor.asFloor().wall;
   if(Ridged.noise3d(gt_seed + 1, po.x, po.y, po.z, 2, gt_scal) > ocu){ti.block = Blocks.air;}
-
-   else if(ti.floor == Blocks.arkyicStone && Simplex.noise3d(seed_vark,1,0,dist_vark,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.arkyicVent; ti.block = Blocks.air;}
+  if(ti.block == Blocks.air && rand.chance(0.03)){ti.block = ti.floor.asFloor().decoration;}
+  
+   if(ti.floor == Blocks.arkyicStone && Simplex.noise3d(seed_vark,1,0,dist_vark,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.arkyicVent; ti.block = Blocks.air;}
+   else if(ti.floor == Blocks.carbonStone && Simplex.noise3d(seed_vcar,1,0,dist_vcar,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.carbonVent; ti.block = Blocks.air;}
    else if(ti.floor == Blocks.crystallineStone && Simplex.noise3d(seed_vcry,1,0,dist_vcry,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.crystallineVent; ti.block = Blocks.air;}
    else if(ti.floor == Blocks.redStone && Simplex.noise3d(seed_vred,1,0,dist_vred,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.redStoneVent; ti.block = Blocks.air;}
    else if(ti.floor == Blocks.rhyolite && Simplex.noise3d(seed_vrhy,1,0,dist_vrhy,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.rhyoliteVent; ti.block = Blocks.air;}
    else if(ti.floor == Blocks.yellowStone && Simplex.noise3d(seed_vyel,1,0,dist_vyel,po.x,po.y,po.z) > 0.75){ti.floor = Blocks.yellowStoneVent; ti.block = Blocks.air;}
 
-   // adding resources here does not work.
+   // adding resources here does not work. Adding props
+ 
 },
 noiseOct(x, y, octaves, falloff, scl){
     var v = this.sector.rect.project(x, y).scl(5);
@@ -239,7 +242,7 @@ function init_random()
   gt_seed = Math.floor(Math.random() * 999999999); gt_scal = 20 * Math.pow(2,Math.random()); 
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
-  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 1+ Math.random(); rh_powe = Math.random() * 4; rh_yofs = Math.random() * 95;
+  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 1+ Math.random(); rh_powe = Math.random() * 3; rh_yofs = Math.random() * 95;
   sclr = 5 * Math.pow(2,Math.random());
   sclx = 5 * Math.pow(2,Math.random());  scly = 5 * Math.pow(2,Math.random());  sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
