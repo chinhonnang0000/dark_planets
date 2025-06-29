@@ -266,7 +266,7 @@ function generate_tile_system()
        total_tiles[a].push(get_random_tile());
       b =0; while (b < floor_levels)
       {
-        var c = Math.floor(Math.random() * 1.999);
+        var c = Math.floor(Math.random() * 2.999);
         switch(c)
         {
           case 0: total_tiles[a].push(Blocks.beryllicStone); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.beryllicStone);b = b+5; break;
