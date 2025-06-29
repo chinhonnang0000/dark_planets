@@ -218,7 +218,7 @@ function get_tile(a,b)
 }
 function get_random_tile()
 {
-  var a = Math.floor(Math.random() * 9);
+  var a = Math.floor(Math.random() * 9.99);
   switch(a)
   {
     case 0: return Blocks.ferricStone; 
@@ -229,21 +229,9 @@ function get_random_tile()
     case 5: return Blocks.stone; 
     case 7: return Blocks.coreZone;
     case 8: return Blocks.carbonStone; 
+    case 9: return Blocks.yellowStone; 
   }
   return Blocks.coreZone; 
-}
-
-function get_random_tile_group()
-{
-  var a = Math.random() * 7;
-  if(a < 1) return floors_arky;
-  else if(a < 2) return floors_volc;
-  else if(a < 3) return floors_wdar;
-  else if(a < 4) return floors_wlig;
-  else if(a < 5) return floors_spor;
-  else if(a < 6) return floors_oils;
-  else if(a < 7) return floors_cold;
-  return [Blocks.coreZone,Blocks.coreZone,Blocks.coreZone];
 }
 
 function init_random()
@@ -251,7 +239,7 @@ function init_random()
   gt_seed = Math.floor(Math.random() * 999999999); gt_scal = 20 * Math.pow(2,Math.random()); 
   wos = Math.random()* 0.15;  
   this_pl.sectorSeed = Math.floor(Math.random() * 999999999);
-  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 0.8 + Math.random() * 0.4; rh_powe = Math.random() * 4.5; rh_yofs = Math.random() * 95;
+  rh_seed = Math.floor(Math.random() * 999999999); rh_sclh = 1+ Math.random(); rh_powe = Math.random() * 4; rh_yofs = Math.random() * 95;
   sclr = 5 * Math.pow(2,Math.random());
   sclx = 5 * Math.pow(2,Math.random());  scly = 5 * Math.pow(2,Math.random());  sclz = 5 * Math.pow(2,Math.random());
   floor_levels = 20 + Math.floor(Math.random() * 50);
@@ -282,7 +270,7 @@ function generate_tile_system()
        total_tiles[a].push(get_random_tile());
       b =0; while (b < floor_levels)
       {
-        var c = Math.floor(Math.random() * 5.999);
+        var c = Math.floor(Math.random() * 6.999);
         switch(c)
         {
           case 0: total_tiles[a].push(Blocks.beryllicStone); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.beryllicStone);b = b+5; break;
@@ -290,6 +278,7 @@ function generate_tile_system()
           case 2: total_tiles[a].push(Blocks.darksand); total_tiles[a].push(Blocks.darksandWater); total_tiles[a].push(Blocks.darksand); b = b+3; break; 
           case 4: total_tiles[a].push(Blocks.moss); total_tiles[a].push(Blocks.sporeMoss); total_tiles[a].push(Blocks.moss); b = b+3; break; 
           case 5: total_tiles[a].push(Blocks.snow); total_tiles[a].push(Blocks.iceSnow); total_tiles[a].push(Blocks.ice); total_tiles[a].push(Blocks.iceSnow); total_tiles[a].push(Blocks.snow); b = b+5; break; 
+          case 6: total_tiles[a].push(Blocks.crystalineStone); total_tiles[a].push(Blocks.crystalFloor); total_tiles[a].push(Blocks.crystalineStone); b = b+3; break; 
         }
         total_tiles[a].push(get_random_tile());
         b = b+1; 
