@@ -270,6 +270,7 @@ function init_random()
   ocu = Math.random() * 0.6; 
 
   dist_bery = 40 + Math.random() * 20; seed_bery = Math.floor(Math.random() * 999999999); // erekir stuff
+  dist_coal = 40 + Math.random() * 20; seed_coal = Math.floor(Math.random() * 999999999);
   dist_copp = 40 + Math.random() * 20; seed_copp = Math.floor(Math.random() * 999999999);
   dist_lead = 40 + Math.random() * 20; seed_lead = Math.floor(Math.random() * 999999999);
   dist_tung = 40 + Math.random() * 20; seed_tung = Math.floor(Math.random() * 999999999); // erekir stuff. 
