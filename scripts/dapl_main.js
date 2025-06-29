@@ -262,10 +262,16 @@ function generate_tile_system()
   var a = 0; var b =0; while(a < 12)
     {
        total_tiles[a] = new Array();
-      total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile())
+       sotal_tiles[a].push(Blocks.slag); total_tiles[a].push(Blocks.magmarock); toral_tiles[a].push(Blocks.hotrock); total_tiles[a].push(Blocks.basalt); total_tiles[a].push(Blocks.dacite);  
+       total_tiles[a].push(get_random_tile());
       b =0; while (b < floor_levels)
       {
-        total_tiles[a].concat(get_random_tile_group()); total_tiles[a].push(get_random_tile());
+        var c = Math.floor(Math.random() * 0.999);
+        switch(c)
+        {
+          case 0: toral_tiles[a].push(Blocks.beryllicStone); toral_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Blocks.arkyciteFloor); total_tiles[a].push(Blocks.arkyicStone); total_tiles[a].push(Block.beryllicStone); b = b+5;
+        }
+        total_tiles[a].push(get_random_tile());
         b = b+1; 
       }
       a =a+1; 
